@@ -22,7 +22,7 @@ jobs:
         env:
           REACT_APP_API_URI: ${{ secrets.REACT_APP_API_URI }}
         run: |
-          npm install
+          npm ci
           npm run build
           
       - name: Create a Release
@@ -47,7 +47,7 @@ jobs:
           
       - name: Build Server
         run: |
-          npm install
+          npm ci
           npm run build
       
       - name: Create a Release
