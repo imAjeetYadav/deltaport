@@ -20,7 +20,6 @@ jobs:
           
       - name: Build Client
         run: |
-          ls
           npm install
           npm run build
           
@@ -39,7 +38,6 @@ jobs:
           
       - name: Build Server
         run: |
-          ls
           npm install
           npm run build
 
