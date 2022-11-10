@@ -30,7 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          title: $GITHUB_REPOSITORY
+          title: Deltaport - Client
           
   build_server:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          title: ${{ env.GITHUB_REPOSITORY }}
+          title: Deltaport - Server
                      
   push:
     runs-on: ubuntu-latest
