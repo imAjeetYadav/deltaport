@@ -1,0 +1,38 @@
+name: Build and Push
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+#   push:
+#     branches: [main]
+  pull_request:
+    branches: [main]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build_and_push:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3  
+#       - name: docker login
+#         env:
+#           DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
+#           DOCKERHUB_TOKEN: ${{secrets.DOCKERHUB_TOKEN}}
+#         run: |
+#           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
+          
+      - name: Build image
+        run: docker-compose build
+        
+      - name: Push image to docker hub
+        run: |
+          docker ps
+
+#       - name: Tag image
+#         run: |
+#           docker tag eagleapps/nginx-proxy registry.digitalocean.com/fixapplication/fixa-micro-services_nginx-proxy:latest
+        
+      - name: Push image to digitalocean
+        run: docker push registry.digitalocean.com/fixapplication/fixa-micro-services_nginx-proxy:latest
+                     
+   
