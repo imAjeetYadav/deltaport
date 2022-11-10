@@ -8,7 +8,7 @@ jobs:
   build_client:
     defaults: 
       run:
-        working-directory:  ./client
+        working-directory: client
         
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults: 
       run:
-        working-directory:  ./server
+        working-directory: server
         
     steps:
       - uses: actions/checkout@v3
@@ -37,9 +37,9 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
+#           cache-dependency-path: 
           
       - name: Build Server
-        working-directory: ./server
         run: |
           npm install
           npm run build
