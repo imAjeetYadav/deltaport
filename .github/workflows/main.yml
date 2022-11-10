@@ -26,13 +26,13 @@ jobs:
         
       - name: Push image to docker hub
         run: |
-          docker ps
+          docker images
 
 #       - name: Tag image
 #         run: |
 #           docker tag eagleapps/nginx-proxy registry.digitalocean.com/fixapplication/fixa-micro-services_nginx-proxy:latest
         
-      - name: Push image to digitalocean
-        run: docker push registry.digitalocean.com/fixapplication/fixa-micro-services_nginx-proxy:latest
+#       - name: Push image to Dockerhub
+#         run: docker push registry.digitalocean.com/fixapplication/fixa-micro-services_nginx-proxy:latest
                      
    
