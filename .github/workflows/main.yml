@@ -9,8 +9,6 @@ jobs:
     defaults: 
       run:
         working-directory: client
-    env:
-        REACT_APP_API_URI: "http://localhost:4000"
       
     runs-on: ubuntu-latest
     steps:
@@ -21,14 +19,18 @@ jobs:
           node-version: 16
           
       - name: Build Client
+        env:
+          REACT_APP_API_URI: ${{ secrets.REACT_APP_API_URI }}
         run: |
           npm install
           npm run build
           
       - name: Create a Release
         uses: elgohr/Github-Release-Action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          title: MyReleaseMessage
+          title: $GITHUB_REPOSITORY
           
   build_server:
     runs-on: ubuntu-latest
@@ -50,6 +52,8 @@ jobs:
       
       - name: Create a Release
         uses: elgohr/Github-Release-Action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           title: $GITHUB_REPOSITORY
                      
